@@ -59,19 +59,53 @@ const SlotAssignment = () => {
   };
 
   // 担当者をドラッグ&ドロップしたときの処理
-  const handleStaffDrop = (staffId, line, date, time) => {
+  const handleStaffDrop = (staffId, line, date, time, sourceSlot) => {
     const staff = staffMembers.find((s) => s.id === parseInt(staffId));
 
     if (staff) {
-      const slotKey = `${line}-${date.toDateString()}-${time}`;
+      const targetSlotKey = `${line}-${date.toDateString()}-${time}`;
+
+      // 同じスロットにドロップされた場合は何もしない
+      if (sourceSlot === targetSlotKey) return;
+
+      // 移動元のスロットがある場合は、そのスロットを未割り当てにする
+      if (sourceSlot) {
+        setAssignments((prev) => {
+          const newAssignments = { ...prev };
+          delete newAssignments[sourceSlot];
+          return newAssignments;
+        });
+      }
+
+      // 新しいスロットに割り当てる
       setAssignments((prev) => ({
         ...prev,
-        [slotKey]: {
+        [targetSlotKey]: {
           staffId: staff.id,
           staffName: staff.name,
           color: staff.color,
         },
       }));
+    }
+  };
+
+  // 複数のスロットに一括で担当者を割り当てる処理
+  const handleMultipleAssign = (staffId, slotKeys) => {
+    const staff = staffMembers.find((s) => s.id === parseInt(staffId));
+
+    if (staff && slotKeys.length > 0) {
+      const newAssignments = { ...assignments };
+
+      // 選択されたすべてのスロットに同じ担当者を割り当てる
+      slotKeys.forEach((slotKey) => {
+        newAssignments[slotKey] = {
+          staffId: staff.id,
+          staffName: staff.name,
+          color: staff.color,
+        };
+      });
+
+      setAssignments(newAssignments);
     }
   };
 
@@ -84,10 +118,11 @@ const SlotAssignment = () => {
         formatDate={formatDate}
         prevWeek={prevWeek}
         nextWeek={nextWeek}
+        setCurrentDate={setCurrentDate}
       />
 
       {/* 2カラムレイアウト */}
-      <div className="flex gap-4">
+      <div className="flex flex-col md:flex-row gap-4">
         {/* スケジュールグリッド */}
         <SlotGrid
           dateRange={dateRange}
@@ -97,6 +132,7 @@ const SlotAssignment = () => {
           formatDate={formatDate}
           handleSlotClick={handleSlotClick}
           handleStaffDrop={handleStaffDrop}
+          handleMultipleAssign={handleMultipleAssign}
         />
 
         {/* 担当者パネル */}
