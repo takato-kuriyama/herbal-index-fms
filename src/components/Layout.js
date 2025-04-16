@@ -1,14 +1,18 @@
 // src/components/Layout.js
 import React from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, Link } from "react-router-dom";
+import HeaderMenu from "./HeaderMenu";
 
 const Layout = () => {
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
       {/* ヘッダー */}
-      <header className="bg-gradient-to-r from-teal-600 to-green-500 shadow-lg">
+      <header className="bg-gradient-to-r from-teal-600 to-green-500 shadow-lg sticky top-0 z-50">
         <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-          <div className="flex items-center space-x-1">
+          <Link
+            to="/"
+            className="flex items-center space-x-1 hover:opacity-90 transition-opacity"
+          >
             <svg
               className="w-8 h-8 text-white"
               fill="none"
@@ -27,10 +31,10 @@ const Layout = () => {
               <span className="text-white">HERBAL</span>
               <span className="text-yellow-300 ml-1">INDEX</span>
             </div>
-          </div>
-          <div className="flex items-center space-x-4">
-            {/* ヘッダーのアイコン */}
-          </div>
+          </Link>
+
+          {/* ヘッダーメニュー コンポーネント */}
+          <HeaderMenu />
         </div>
       </header>
 
