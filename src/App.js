@@ -9,7 +9,9 @@ import SlotAssignment from "./pages/SlotAssignment";
 import ProductionPlanning from "./pages/PlaceholderPages";
 import ManufacturingInstructions from "./pages/PlaceholderPages";
 import ManufacturingResults from "./pages/PlaceholderPages";
-import ShippingInstructions from "./pages/PlaceholderPages";
+// Import new shipping instructions pages
+import ShippingInstructionsList from "./pages/ShippingInstructionsList";
+import ShippingInstructionDetail from "./pages/ShippingInstructionDetail";
 import Inventory from "./pages/PlaceholderPages";
 
 function App() {
@@ -31,10 +33,11 @@ function App() {
             path="manufacturing-results"
             element={<ManufacturingResults pageName="製造実績一覧" />}
           />
-          <Route
-            path="shipping-instructions"
-            element={<ShippingInstructions pageName="出荷指示一覧" />}
-          />
+          {/* 出荷指示関連ルートの更新 */}
+          <Route path="shipping-instructions">
+            <Route index element={<ShippingInstructionsList />} />
+            <Route path=":id" element={<ShippingInstructionDetail />} />
+          </Route>
           <Route path="inventory" element={<Inventory pageName="在庫一覧" />} />
           {/* 他のルートをここに追加 */}
         </Route>

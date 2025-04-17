@@ -91,35 +91,35 @@ export const ManufacturingResults = ({ pageName }) => {
   );
 };
 
-// 出荷指示一覧ページのプレースホルダー
-export const ShippingInstructions = ({ pageName }) => {
-  return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold text-gray-800 mb-6 flex items-center">
-        <svg
-          className="w-8 h-8 mr-3 text-teal-600"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M8 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-2m-4-1v8m0 0l3-3m-3 3L9 8m-5 5h2.586a1 1 0 01.707.293l2.414 2.414a1 1 0 00.707.293h3.172a1 1 0 00.707-.293l2.414-2.414a1 1 0 01.707-.293H20"
-          ></path>
-        </svg>
-        {pageName}
-      </h1>
-      <div className="bg-white p-6 rounded-lg shadow-md">
-        <p className="text-gray-600">
-          このページは現在開発中です。近日公開予定です。
-        </p>
-      </div>
-    </div>
-  );
-};
+// // 出荷指示一覧ページのプレースホルダー
+// export const ShippingInstructions = ({ pageName }) => {
+//   return (
+//     <div className="container mx-auto px-4 py-8">
+//       <h1 className="text-3xl font-bold text-gray-800 mb-6 flex items-center">
+//         <svg
+//           className="w-8 h-8 mr-3 text-teal-600"
+//           fill="none"
+//           stroke="currentColor"
+//           viewBox="0 0 24 24"
+//           xmlns="http://www.w3.org/2000/svg"
+//         >
+//           <path
+//             strokeLinecap="round"
+//             strokeLinejoin="round"
+//             strokeWidth="2"
+//             d="M8 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-2m-4-1v8m0 0l3-3m-3 3L9 8m-5 5h2.586a1 1 0 01.707.293l2.414 2.414a1 1 0 00.707.293h3.172a1 1 0 00.707-.293l2.414-2.414a1 1 0 01.707-.293H20"
+//           ></path>
+//         </svg>
+//         {pageName}
+//       </h1>
+//       <div className="bg-white p-6 rounded-lg shadow-md">
+//         <p className="text-gray-600">
+//           このページは現在開発中です。近日公開予定です。
+//         </p>
+//       </div>
+//     </div>
+//   );
+// };
 
 // 在庫一覧ページのプレースホルダー
 export const Inventory = ({ pageName }) => {
